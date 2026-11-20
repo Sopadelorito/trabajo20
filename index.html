@@ -1,0 +1,322 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#080c12">
+    <title>Martial Arts World | Combat Academy</title>
+
+    <link rel="stylesheet" href="diseño.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="script.js" defer></script>
+</head>
+
+<body>
+
+<header class="header">
+    <a href="#inicio" class="logo">MARTIAL<span>WORLD</span></a>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Abrir menú">
+        <i class="fa-solid fa-bars"></i>
+    </button>
+
+    <nav id="nav">
+        <a href="#disciplinas">Disciplinas</a>
+        <a href="#tecnicas">Técnicas</a>
+        <a href="#peleadores">Peleadores</a>
+        <a href="#grados">Cinturones</a>
+        <a href="#campeonatos">Campeonatos</a>
+    </nav>
+</header>
+
+<main>
+
+<!-- PORTADA -->
+
+<section class="hero" id="inicio">
+    <div class="hero-content">
+        <span class="eyebrow">THE WORLD OF COMBAT SPORTS</span>
+
+        <h1>MASTER<br>YOUR <span>ART.</span></h1>
+
+        <p>
+            Descubrí las disciplinas, aprendé técnicas,
+            conocé a los mejores peleadores y explorá
+            el universo de las artes marciales.
+        </p>
+
+        <a href="#disciplinas" class="btn">
+            EXPLORAR DISCIPLINAS
+            <i class="fa-solid fa-arrow-right"></i>
+        </a>
+    </div>
+
+    <div class="hero-label">
+        DISCIPLINE · RESPECT · EVOLUTION
+    </div>
+</section>
+
+<!-- DISCIPLINAS -->
+
+<section class="section" id="disciplinas">
+
+    <div class="section-title">
+        <span class="eyebrow">ENCONTRÁ TU CAMINO</span>
+        <h2>ARTES <span>MARCIALES</span></h2>
+        <p>Seleccioná una disciplina para descubrir su mundo.</p>
+    </div>
+
+    <div class="discipline-grid">
+
+        <!-- JIU JITSU -->
+
+        <button class="discipline-card active" data-art="jiujitsu">
+            <img
+                src="https://junglefowlbjj.ca/media/competitions/401794271_310053428489822_1293418127869845825_n.jpg"
+                alt="Combate real de Brazilian Jiu Jitsu"
+                loading="lazy">
+
+            <span>01 / GRAPPLING</span>
+            <h3>JIU JITSU</h3>
+            <p>Control, técnica y sumisión.</p>
+        </button>
+
+        <!-- MUAY THAI -->
+
+        <button class="discipline-card" data-art="muaythai">
+            <img
+                src="https://www.nowmuaythai.com/uploads/350530497_278639441180141_8124323377364205715_n_9addc8632a.jpg"
+                alt="Entrenamiento real de Muay Thai"
+                loading="lazy">
+
+            <span>02 / STRIKING</span>
+            <h3>MUAY THAI</h3>
+            <p>El arte de las ocho extremidades.</p>
+        </button>
+
+        <!-- GRAPPLING -->
+
+        <button class="discipline-card" data-art="grappling">
+            <img
+    src="https://dev.americangrapplingfederation.com/images/pro-challenge-2.jpg"
+    alt="Competencia real de grappling No-Gi"
+    loading="lazy">
+
+            <span>03 / SUBMISSION</span>
+            <h3>GRAPPLING</h3>
+            <p>Lucha y control sin kimono.</p>
+        </button>
+
+        <!-- JUDO -->
+
+        <button class="discipline-card" data-art="judo">
+            <img
+                src="https://78884ca60822a34fb0e6-082b8fd5551e97bc65e327988b444396.ssl.cf3.rackcdn.com/up/2022/08/ecua-3-1660422986-1660422986.jpg"
+                alt="Competencia de Judo con proyección"
+                loading="lazy">
+
+            <span>04 / THROWING</span>
+            <h3>JUDO</h3>
+            <p>Proyección, equilibrio y disciplina.</p>
+        </button>
+
+        <!-- MMA -->
+
+        <button class="discipline-card" data-art="mma">
+            <img
+                src="https://insurgent.fitness/assets/media/img/mma/ic-menu-mma.jpg"
+                alt="Combate real de MMA dentro de una jaula"
+                loading="lazy">
+
+            <span>05 / MIXED MARTIAL ARTS</span>
+            <h3>MMA</h3>
+            <p>El combate completo.</p>
+        </button>
+
+    </div>
+
+    <div class="discipline-info" id="disciplineInfo"></div>
+
+</section>
+
+<!-- PELEADORES -->
+
+<section class="section fighters-section" id="peleadores">
+
+    <div class="section-title">
+        <span class="eyebrow">ATLETAS DEL MUNDO</span>
+        <h2>FIGHTER <span>DATABASE</span></h2>
+        <p>Buscá atletas y descubrí sus trayectorias.</p>
+    </div>
+
+    <div class="search-panel">
+        <input
+            id="fighterSearch"
+            type="text"
+            placeholder="Ejemplo: Gordon Ryan, Buakaw, Teddy Riner...">
+
+        <button id="searchFighter">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            BUSCAR
+        </button>
+    </div>
+
+    <div class="api-label" id="fighterStatus">
+        API Wikipedia preparada
+    </div>
+
+    <div class="fighter-grid" id="fighterResults">
+        <div class="empty-state">
+            <i class="fa-solid fa-user-ninja"></i>
+            <p>Buscá un peleador para descubrir su biografía.</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- TÉCNICAS -->
+
+<section class="section" id="tecnicas">
+
+    <div class="section-title">
+        <span class="eyebrow">APRENDÉ Y PERFECCIONÁ</span>
+        <h2>TECHNIQUE <span>LIBRARY</span></h2>
+        <p>Videos demostrativos de técnicas de cada disciplina.</p>
+    </div>
+
+    <div class="technique-controls">
+
+        <select id="techniqueArt">
+            <option value="jiujitsu">Jiu Jitsu</option>
+            <option value="muaythai">Muay Thai</option>
+            <option value="grappling">Grappling</option>
+            <option value="judo">Judo</option>
+            <option value="mma">MMA</option>
+        </select>
+
+        <input
+            id="techniqueSearch"
+            type="text"
+            placeholder="Buscar técnica: armbar, triangle, jab...">
+
+        <button id="searchTechnique">BUSCAR VIDEOS</button>
+
+    </div>
+
+    <div class="api-label" id="videoStatus">
+        API YouTube preparada
+    </div>
+
+    <div class="video-grid" id="videoResults">
+        <div class="empty-state">
+            <i class="fa-brands fa-youtube"></i>
+            <p>Elegí una disciplina y buscá una técnica.</p>
+        </div>
+    </div>
+
+</section>
+
+<!-- CINTURONES -->
+
+<section class="section belts-section" id="grados">
+
+    <div class="section-title">
+        <span class="eyebrow">CAMINO DEL APRENDIZAJE</span>
+        <h2>BELTS & <span>RANKS</span></h2>
+        <p>
+            Explorá modelos 3D de faixas y cinturones,
+            con categorías adultas y juveniles.
+            Los sistemas pueden variar según la federación.
+        </p>
+    </div>
+
+    <select id="beltArt" class="wide-select">
+        <option value="jiujitsu">Jiu Jitsu brasileño</option>
+        <option value="muaythai">Muay Thai</option>
+        <option value="grappling">Grappling</option>
+        <option value="judo">Judo</option>
+        <option value="mma">MMA</option>
+    </select>
+
+    <div class="belt-viewer-layout">
+
+        <div class="belt-viewer">
+            <canvas
+                id="beltCanvas"
+                aria-label="Modelo 3D de faixa o cinturón">
+            </canvas>
+
+            <span class="viewer-label">
+                FAIXA / BELT · MODELO 3D
+            </span>
+
+            <div class="viewer-controls">
+                <button id="rotateBelt" aria-label="Pausar o activar rotación">
+                    <i class="fa-solid fa-rotate"></i>
+                </button>
+
+                <button id="resetBelt" aria-label="Reiniciar vista">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+            </div>
+        </div>
+
+        <div class="belt-details">
+
+            <label for="beltCategory">Categoría</label>
+
+            <select id="beltCategory" class="wide-select">
+                <option value="adult">Adultos</option>
+                <option value="juvenile">Juveniles</option>
+            </select>
+
+            <div id="beltSelectedInfo" class="belt-selected-info"></div>
+
+        </div>
+
+    </div>
+
+    <div id="beltContent" class="belt-content"></div>
+
+</section>
+
+<!-- CAMPEONATOS -->
+
+<section class="section" id="campeonatos">
+
+    <div class="section-title">
+        <span class="eyebrow">LA ÉLITE INTERNACIONAL</span>
+        <h2>WORLD <span>CHAMPIONSHIPS</span></h2>
+        <p>Los torneos más reconocidos de cada disciplina.</p>
+    </div>
+
+    <div class="championship-grid" id="championshipGrid"></div>
+
+</section>
+
+</main>
+
+<footer class="footer">
+
+    <a href="#inicio" class="logo">
+        MARTIAL<span>WORLD</span>
+    </a>
+
+    <p>DISCIPLINE · RESPECT · EVOLUTION</p>
+
+    <small>
+        Proyecto educativo independiente.
+        No afiliado a organizaciones deportivas.
+    </small>
+
+</footer>
+
+</body>
+</html>

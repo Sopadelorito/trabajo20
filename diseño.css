@@ -1,0 +1,911 @@
+
+:root {
+    --bg: #080c12;
+    --panel: #111923;
+    --panel2: #17212d;
+    --gold: #d8ae65;
+    --red: #d94747;
+    --text: #f4f4f4;
+    --muted: #9ba6b2;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: Inter, sans-serif;
+    overflow-x: hidden;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+button, input, select {
+    font: inherit;
+}
+
+button {
+    cursor: pointer;
+}
+
+/* HEADER */
+
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    height: 76px;
+    background: rgba(8,12,18,.96);
+    border-bottom: 1px solid #26303b;
+    padding: 0 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    backdrop-filter: blur(15px);
+}
+
+.logo {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 29px;
+    font-weight: 900;
+    letter-spacing: 1px;
+}
+
+.logo span {
+    color: var(--gold);
+    margin-left: 5px;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+}
+
+nav a {
+    color: #c5cbd2;
+    font-size: 11px;
+    font-weight: 800;
+    text-transform: uppercase;
+    transition: .3s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+.menu-btn {
+    display: none;
+    background: none;
+    color: white;
+    border: 0;
+    font-size: 24px;
+}
+
+/* PORTADA */
+
+.hero {
+    min-height: 680px;
+    padding: 100px 10%;
+    display: flex;
+    align-items: center;
+    position: relative;
+    isolation: isolate;
+    background:
+        linear-gradient(
+            90deg,
+            #080c12 4%,
+            rgba(8,12,18,.88) 38%,
+            rgba(8,12,18,.22) 100%
+        ),
+        url("https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1800&q=90")
+        center 35% / cover no-repeat;
+}
+
+.hero::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(0deg, #080c12, transparent 30%);
+}
+
+.hero-content {
+    position: relative;
+    max-width: 650px;
+    animation: enter 1s ease;
+}
+
+.eyebrow {
+    color: var(--gold);
+    font-size: 10px;
+    font-weight: 900;
+    letter-spacing: 3px;
+}
+
+.hero h1 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: clamp(85px, 12vw, 145px);
+    line-height: .78;
+    font-style: italic;
+    margin: 30px 0;
+    font-weight: 900;
+}
+
+.hero h1 span {
+    color: var(--gold);
+}
+
+.hero p {
+    color: #c2c9d1;
+    line-height: 1.8;
+    font-size: 14px;
+    max-width: 470px;
+}
+
+.btn {
+    margin-top: 30px;
+    display: inline-flex;
+    align-items: center;
+    gap: 15px;
+    background: var(--gold);
+    color: #111;
+    padding: 17px 25px;
+    font-size: 11px;
+    font-weight: 900;
+    transition: .3s;
+}
+
+.btn:hover {
+    background: white;
+    transform: translateY(-4px);
+}
+
+.hero-label {
+    position: absolute;
+    bottom: 25px;
+    left: 10%;
+    color: #aaa;
+    font-size: 9px;
+    letter-spacing: 3px;
+}
+
+/* SECCIONES */
+
+.section {
+    padding: 100px 8%;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 45px;
+}
+
+.section-title h2 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 58px;
+    font-weight: 900;
+    margin: 12px 0;
+}
+
+.section-title h2 span {
+    color: var(--gold);
+}
+
+.section-title p {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.7;
+}
+
+/* DISCIPLINAS */
+
+.discipline-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 15px;
+}
+
+.discipline-card {
+    border: 1px solid #27313e;
+    padding: 0;
+    background: var(--panel);
+    color: white;
+    text-align: left;
+    overflow: hidden;
+    transition: .3s;
+    min-width: 0;
+}
+
+.discipline-card:hover,
+.discipline-card.active {
+    border-color: var(--gold);
+    transform: translateY(-7px);
+}
+
+.discipline-card img {
+    height: 225px;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+    display: block;
+    transition: transform .5s, filter .4s;
+    filter: brightness(.85);
+}
+
+.discipline-card:hover img {
+    transform: scale(1.06);
+    filter: brightness(1);
+}
+
+.discipline-card span {
+    display: block;
+    color: var(--gold);
+    font-size: 9px;
+    padding: 18px 15px 0;
+    font-weight: 900;
+}
+
+.discipline-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 27px;
+    padding: 8px 15px;
+}
+
+.discipline-card p {
+    color: var(--muted);
+    padding: 0 15px 20px;
+    font-size: 11px;
+}
+
+.discipline-info {
+    display: grid;
+    grid-template-columns: 1fr 1.05fr;
+    gap: 28px;
+    align-items: center;
+    background: var(--panel);
+    padding: 25px;
+    margin-top: 25px;
+    border-left: 3px solid var(--gold);
+    color: #c6cbd2;
+    line-height: 1.8;
+    font-size: 13px;
+}
+
+.discipline-detail-copy h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 34px;
+    color: #fff;
+    margin: 8px 0 12px;
+}
+
+.discipline-detail-copy p {
+    margin: 9px 0;
+}
+
+.discipline-detail-copy strong {
+    color: var(--gold);
+}
+
+.art-equipment {
+    margin-top: 22px;
+    padding: 20px;
+    background: #17212d;
+    border-left: 3px solid var(--gold);
+}
+
+.art-equipment h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 25px;
+    margin: 8px 0;
+    color: #fff;
+}
+
+.art-equipment p {
+    color: #c5ccd4;
+}
+
+/* BUSCADORES */
+
+.fighters-section,
+.belts-section {
+    background: #0d141e;
+}
+
+.search-panel,
+.technique-controls {
+    display: flex;
+    gap: 12px;
+    max-width: 850px;
+    margin: 0 auto 25px;
+    flex-wrap: wrap;
+}
+
+.search-panel input,
+.technique-controls input,
+.technique-controls select,
+.wide-select {
+    flex: 1;
+    min-width: 180px;
+    background: var(--panel2);
+    border: 1px solid #34404e;
+    color: white;
+    padding: 16px;
+    outline: none;
+}
+
+.search-panel input:focus,
+.technique-controls input:focus,
+.technique-controls select:focus,
+.wide-select:focus {
+    border-color: var(--gold);
+}
+
+.search-panel button,
+.technique-controls button {
+    padding: 15px 23px;
+    border: none;
+    background: var(--gold);
+    color: #111;
+    font-weight: 900;
+    font-size: 11px;
+    transition: .3s;
+}
+
+.search-panel button:hover,
+.technique-controls button:hover {
+    background: white;
+}
+
+.api-label {
+    color: var(--muted);
+    text-align: center;
+    font-size: 11px;
+    margin: 15px;
+}
+
+/* PELEADORES */
+
+.fighter-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.fighter-card {
+    background: var(--panel);
+    border: 1px solid #27313e;
+    overflow: hidden;
+    transition: .3s;
+}
+
+.fighter-card:hover {
+    transform: translateY(-6px);
+    border-color: var(--gold);
+}
+
+.fighter-card img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+    display: block;
+}
+
+.fighter-info {
+    padding: 20px;
+}
+
+.fighter-info h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 26px;
+    margin: 10px 0;
+}
+
+.fighter-info span {
+    font-size: 10px;
+    color: var(--gold);
+}
+
+.fighter-info p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.6;
+}
+
+.fighter-info a {
+    display: inline-block;
+    margin-top: 12px;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+}
+
+.empty-state {
+    grid-column: 1 / -1;
+    text-align: center;
+    padding: 45px;
+    color: var(--muted);
+}
+
+.empty-state i {
+    font-size: 40px;
+    color: var(--gold);
+    margin-bottom: 15px;
+}
+
+/* VIDEOS */
+
+.video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.video-card {
+    background: var(--panel);
+    border: 1px solid #27313e;
+    overflow: hidden;
+}
+
+.video-card iframe {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    border: 0;
+    display: block;
+}
+
+.video-card h3 {
+    padding: 16px;
+    font-size: 13px;
+    line-height: 1.6;
+}
+
+/* CINTURONES */
+
+.wide-select {
+    display: block;
+    max-width: 400px;
+    width: 100%;
+    margin: auto;
+}
+
+.belt-viewer-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 24px;
+    margin: 30px auto 10px;
+    max-width: 1050px;
+}
+
+.belt-viewer {
+    height: 420px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid #394453;
+    background: radial-gradient(circle at center, #2a3b4f, #0a1018 75%);
+}
+
+#beltCanvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+}
+
+.belt-details {
+    background: var(--panel);
+    border: 1px solid #28323d;
+    padding: 25px;
+}
+
+.belt-details label {
+    display: block;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-size: 11px;
+    font-weight: 900;
+    margin-bottom: 12px;
+}
+
+.belt-details .wide-select {
+    margin: 0 0 20px;
+}
+
+.belt-selected-info h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    margin: 8px 0;
+}
+
+.belt-selected-info p {
+    color: var(--muted);
+    font-size: 13px;
+    line-height: 1.7;
+    margin-top: 8px;
+}
+
+.belt-content {
+    display: block;
+    max-width: 1100px;
+    margin: 28px auto 0;
+}
+
+.belt-intro {
+    text-align: center;
+    margin: 30px 0 20px;
+}
+
+.belt-intro h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 30px;
+    margin-bottom: 8px;
+}
+
+.belt-intro p {
+    color: var(--muted);
+    font-size: 12px;
+    line-height: 1.7;
+    max-width: 900px;
+    margin: auto;
+}
+
+.belt-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+    gap: 15px;
+    width: 100%;
+}
+
+.belt-card {
+    width: 100%;
+    min-height: 170px;
+    border: 1px solid #28323d;
+    border-radius: 4px;
+    background: var(--panel);
+    color: #fff;
+    padding: 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: .2s;
+}
+
+.belt-card:hover,
+.belt-card.selected {
+    border-color: var(--gold);
+    transform: translateY(-3px);
+}
+
+.belt-card strong,
+.belt-card small {
+    display: block;
+}
+
+.belt-card small {
+    color: var(--gold);
+    margin-top: 7px;
+}
+
+.belt-card p {
+    color: var(--muted);
+    font-size: 11px;
+    line-height: 1.5;
+    margin-top: 7px;
+}
+
+/* REPRESENTACIÓN DE FAIXAS */
+
+.belt-mini {
+    display: block;
+    position: relative;
+    height: 55px;
+    width: 100%;
+    margin-bottom: 12px;
+    filter: drop-shadow(0 7px 4px rgba(0,0,0,.4));
+}
+
+.belt-mini:before {
+    content: "";
+    position: absolute;
+    left: 12%;
+    right: 12%;
+    top: 12px;
+    height: 18px;
+    border-radius: 4px;
+    background:
+        linear-gradient(180deg, rgba(255,255,255,.32), transparent 35%, rgba(0,0,0,.22)),
+        var(--belt-color);
+    transform: rotate(-4deg);
+    box-shadow: inset 0 1px 2px rgba(255,255,255,.3), 0 4px 0 rgba(0,0,0,.25);
+}
+
+.belt-mini:after {
+    content: "";
+    position: absolute;
+    left: 22%;
+    top: 25px;
+    width: 18px;
+    height: 25px;
+    background:
+        linear-gradient(90deg, rgba(0,0,0,.2), rgba(255,255,255,.15)),
+        var(--belt-color);
+    transform: rotate(8deg);
+    clip-path: polygon(0 0, 100% 0, 100% 80%, 50% 100%, 0 80%);
+}
+
+.belt-mini i {
+    position: absolute;
+    z-index: 2;
+    left: calc(50% - 13px);
+    top: 7px;
+    width: 26px;
+    height: 27px;
+    background:
+        linear-gradient(135deg, rgba(255,255,255,.25), rgba(0,0,0,.2)),
+        var(--belt-color);
+    transform: rotate(45deg);
+    border-radius: 4px;
+}
+
+.belt-mini b {
+    position: absolute;
+    z-index: 3;
+    right: 21%;
+    top: 12px;
+    width: 13px;
+    height: 19px;
+    background: linear-gradient(90deg, #111, #555, #111);
+    border: 1px solid #777;
+    transform: rotate(-4deg);
+}
+
+/* VISOR 3D */
+
+.viewer-label {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 9px;
+    color: var(--gold);
+    letter-spacing: 2px;
+    pointer-events: none;
+}
+
+.viewer-controls {
+    position: absolute;
+    right: 20px;
+    bottom: 20px;
+    display: flex;
+    gap: 10px;
+}
+
+.viewer-controls button {
+    height: 40px;
+    width: 40px;
+    border: 1px solid #586675;
+    background: #121d29;
+    color: white;
+    transition: .2s;
+}
+
+.viewer-controls button:hover {
+    background: var(--gold);
+    color: #111;
+}
+
+/* CAMPEONATOS */
+
+.championship-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.champ-card {
+    background: var(--panel);
+    padding: 28px;
+    border: 1px solid #293441;
+    transition: .3s;
+}
+
+.champ-card:hover {
+    border-color: var(--gold);
+    transform: translateY(-5px);
+}
+
+.champ-card span {
+    font-size: 10px;
+    color: var(--gold);
+    font-weight: 900;
+    letter-spacing: 2px;
+}
+
+.champ-card h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 29px;
+    margin: 18px 0 10px;
+}
+
+.champ-card p {
+    font-size: 12px;
+    line-height: 1.7;
+    color: var(--muted);
+}
+
+.champ-card a {
+    display: inline-block;
+    color: var(--gold);
+    font-size: 11px;
+    font-weight: 800;
+    margin-top: 18px;
+}
+
+/* FOOTER */
+
+.footer {
+    text-align: center;
+    padding: 50px 20px;
+    background: #05080d;
+    border-top: 1px solid #27313e;
+}
+
+.footer p {
+    margin: 15px;
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: 3px;
+}
+
+.footer small {
+    color: #687482;
+    font-size: 10px;
+}
+
+/* ANIMACIONES */
+
+@keyframes enter {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVE */
+
+@media(max-width: 1100px) {
+    .discipline-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .fighter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 800px) {
+    .discipline-info,
+    .belt-viewer-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .belt-viewer {
+        height: 320px;
+    }
+
+    .video-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media(max-width: 700px) {
+    .header {
+        padding: 0 5%;
+    }
+
+    .menu-btn {
+        display: block;
+    }
+
+    nav {
+        display: none;
+        position: absolute;
+        top: 76px;
+        left: 0;
+        width: 100%;
+        background: #0d141e;
+        padding: 25px;
+        flex-direction: column;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        font-size: 12px;
+    }
+
+    .hero {
+        min-height: 570px;
+        padding: 80px 7%;
+        background-position: 60% center;
+    }
+
+    .hero h1 {
+        font-size: 90px;
+    }
+
+    .section {
+        padding: 70px 6%;
+    }
+
+    .section-title h2 {
+        font-size: 45px;
+    }
+
+    .discipline-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .discipline-card img {
+        height: 160px;
+    }
+
+    .video-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .championship-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .belt-viewer {
+        height: 280px;
+    }
+
+    .fighter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .fighter-card img {
+        height: 155px;
+    }
+
+    .belt-details {
+        padding: 20px;
+    }
+
+    .belt-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .search-panel button,
+    .technique-controls button {
+        width: 100%;
+    }
+}
+
+@media(max-width: 380px) {
+    .discipline-grid,
+    .fighter-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .belt-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .hero h1 {
+        font-size: 75px;
+    }
+}
